@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+section, header {
+  scroll-margin-top: 100px;
+}
+
+:root {
+  --bg-color: #131313;
+  --text-primary: #FDFBF2;
+  --text-on-primary: #2f3131;
+  --accent: #00fbfb;
+  --surface-low: #1c1b1b;
+  --surface-high: #353534;
+  --outline: #3a4a49;
+  --text-variant: #b9cac9;
+  --dot-color: rgba(253, 251, 242, 0.05);
+  --dot-bright: rgba(253, 251, 242, 0.5);
+}
+
+:root.light {
+  --bg-color: #FDFBF2;
+  --text-primary: #131313;
+  --text-on-primary: #FDFBF2;
+  --accent: #008b8b;
+  --surface-low: #e5e5e5;
+  --surface-high: #d4d4d4;
+  --outline: #a0aab0;
+  --text-variant: #4a5a59;
+  --dot-color: rgba(0, 0, 0, 0.1);
+  --dot-bright: rgba(0, 0, 0, 0.3);
+}
+
+@theme {
+  --color-background: var(--bg-color);
+  --color-primary: var(--text-primary);
+  --color-on-primary: var(--text-on-primary);
+  --color-secondary-fixed: var(--accent);
+  --color-surface-container-low: var(--surface-low);
+  --color-surface-container-highest: var(--surface-high);
+  --color-outline-variant: var(--outline);
+  --color-on-surface-variant: var(--text-variant);
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: var(--dot-opacity-multiplier, 1);
+  pointer-events: none;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
